@@ -151,7 +151,12 @@ class Salesforce(object):
                                          'describe',
                                          result.status_code,
                                          result.content)
-        json_result = result.json(object_pairs_hook=OrderedDict)
+
+        # Note: Remove dependency on simplejson upgrade 
+
+        #json_result = result.json(object_pairs_hook=OrderedDict)
+        json_result = result.json()
+
         if len(json_result) == 0:
             return None
         else:
