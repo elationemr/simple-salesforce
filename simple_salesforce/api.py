@@ -468,14 +468,16 @@ class SFType(object):
         decoded from the JSON payload returned by Salesforce.
         """
         result = self._call_salesforce('GET', self.base_url)
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def describe(self):
         """Returns the result of a GET to `.../{object_name}/describe` as a
         dict decoded from the JSON payload returned by Salesforce.
         """
         result = self._call_salesforce('GET', self.base_url + 'describe')
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def describe_layout(self, record_id):
         """Returns the layout of the object
@@ -486,7 +488,8 @@ class SFType(object):
         """
         result = self._call_salesforce(
             'GET', self.base_url + 'describe/layouts/' + record_id)
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def get(self, record_id):
         """Returns the result of a GET to `.../{object_name}/{record_id}` as a
@@ -497,7 +500,8 @@ class SFType(object):
         * record_id -- the Id of the SObject to get
         """
         result = self._call_salesforce('GET', self.base_url + record_id)
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def get_by_custom_id(self, custom_id_field, custom_id):
         """Return an ``SFType`` by custom ID
@@ -515,7 +519,8 @@ class SFType(object):
         custom_url = self.base_url + '{custom_id_field}/{custom_id}'.format(
             custom_id_field=custom_id_field, custom_id=custom_id)
         result = self._call_salesforce('GET', custom_url)
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def create(self, data):
         """Creates a new SObject using a POST to `.../{object_name}/`.
@@ -529,7 +534,8 @@ class SFType(object):
         """
         result = self._call_salesforce('POST', self.base_url,
                                        data=json.dumps(data))
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def upsert(self, record_id, data, raw_response=False):
         """Creates or updates an SObject using a PATCH to
@@ -603,7 +609,8 @@ class SFType(object):
         url = self.base_url + 'deleted/?start={start}&end={end}'.format(
             start=date_to_iso8601(start), end=date_to_iso8601(end))
         result = self._call_salesforce('GET', url)
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def updated(self, start, end):
         # pylint: disable=line-too-long
@@ -620,7 +627,8 @@ class SFType(object):
         url = self.base_url + 'updated/?start={start}&end={end}'.format(
             start=date_to_iso8601(start), end=date_to_iso8601(end))
         result = self._call_salesforce('GET', url)
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def _call_salesforce(self, method, url, **kwargs):
         """Utility method for performing HTTP call to Salesforce.
