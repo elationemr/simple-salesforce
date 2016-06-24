@@ -27,7 +27,8 @@ setup(
         "returning an ordered dictionary of the API JSON response."),
     long_description=textwrap.dedent(open('README.rst', 'r').read()),
     install_requires=[
-        'requests[security]'
+        'requests==2.5.3'
+        #'requests[security]'
     ] + pyver_install_requires,
     tests_require=[
         'nose>=1.3.0',
