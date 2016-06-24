@@ -210,7 +210,8 @@ class Salesforce(object):
                                          'User',
                                          result.status_code,
                                          result.content)
-        json_result = result.json(object_pairs_hook=OrderedDict)
+        #json_result = result.json(object_pairs_hook=OrderedDict)
+        json_result = result.json()
         if len(json_result) == 0:
             return None
         else:
@@ -255,7 +256,8 @@ class Salesforce(object):
                                          path,
                                          result.status_code,
                                          result.content)
-        json_result = result.json(object_pairs_hook=OrderedDict)
+        #json_result = result.json(object_pairs_hook=OrderedDict)
+        json_result = result.json()
         if len(json_result) == 0:
             return None
         else:
@@ -281,7 +283,8 @@ class Salesforce(object):
                                          'search',
                                          result.status_code,
                                          result.content)
-        json_result = result.json(object_pairs_hook=OrderedDict)
+        #json_result = result.json(object_pairs_hook=OrderedDict)
+        json_result = result.json()
         if len(json_result) == 0:
             return None
         else:
@@ -318,7 +321,8 @@ class Salesforce(object):
         if result.status_code != 200:
             _exception_handler(result)
 
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def query_more(
             self, next_records_identifier, identifier_is_url=False, **kwargs):
@@ -349,7 +353,8 @@ class Salesforce(object):
         if result.status_code != 200:
             _exception_handler(result)
 
-        return result.json(object_pairs_hook=OrderedDict)
+        #return result.json(object_pairs_hook=OrderedDict)
+        return result.json()
 
     def query_all(self, query, **kwargs):
         """Returns the full set of results for the `query`. This is a
